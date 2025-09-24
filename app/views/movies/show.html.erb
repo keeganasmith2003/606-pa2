@@ -25,8 +25,7 @@
     <%= link_to "Back to movies", movies_path,
           style: "display:inline-block;padding:.4rem .7rem;border-radius:6px;border:1px solid #ddd;background:#f8f8f8;color:#333;text-decoration:none" %>
 
-    <%= link_to "Destroy this movie", @movie,
-          data: { turbo_method: :delete, turbo_confirm: "Delete “#{@movie.title}”?" },
-          style: "display:inline-block;padding:.4rem .7rem;border-radius:6px;border:1px solid #d64536;background:#e84c3d;color:#fff;text-decoration:none" %>
+    <%= button_to "Destroy this movie", @movie, method: :delete %>
+
   </div>
 </div>

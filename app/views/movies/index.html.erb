@@ -20,6 +20,8 @@
           <td><span class="badge"><%= movie.rating %></span></td>
           <td><%= movie.release_date %></td>
           <td><%= link_to "Show", movie, class: "btn btn-link" %></td>
+          <td><%= link_to "Edit", edit_movie_path(movie), class: "btn btn-link" %></td>
+          <td><%= link_to "Delete", movie, class: "btn btn-link" %></td>
         </tr>
       <% end %>
     </tbody>

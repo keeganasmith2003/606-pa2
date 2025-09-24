@@ -1,54 +1,39 @@
 <p style="color: green"><%= notice %></p>
 
-<div style="max-width:960px;margin:1rem auto;padding:1rem;border:1px solid #e6e6e6;border-radius:10px;background:#fff">
-  <h1 style="margin:0 0 .75rem;letter-spacing:.3px">Movies</h1>
+<div class="page">
+  <h1 class="page-title">Movies</h1>
 
-  <table style="width:100%;border-collapse:collapse;font-size:15px">
+  <table class="movies-table">
     <thead>
       <tr>
-        <th class="<%= sort_class(:title) %>" style="text-align:left;padding:.6rem .7rem;border-bottom:2px solid #eaeaea;background:#fafafa">
-          <%= sortable :title, "Title" %>
-        </th>
-        <th class="<%= sort_class(:rating) %>" style="text-align:left;padding:.6rem .7rem;border-bottom:2px solid #eaeaea;background:#fafafa">
-          <%= sortable :rating, "Rating" %>
-        </th>
-        <th class="<%= sort_class(:release_date) %>" style="text-align:left;padding:.6rem .7rem;border-bottom:2px solid #eaeaea;background:#fafafa">
-          <%= sortable :release_date, "Release date" %>
-        </th>
-        <th style="text-align:left;padding:.6rem .7rem;border-bottom:2px solid #eaeaea;background:#fafafa;width:220px">Actions</th>
+        <th class="<%= sort_class(:title) %>"><%= sortable :title, "Title" %></th>
+        <th class="<%= sort_class(:rating) %>"><%= sortable :rating, "Rating" %></th>
+        <th class="<%= sort_class(:release_date) %>"><%= sortable :release_date, "Release date" %></th>
+        <th class="actions-col"></th>
       </tr>
     </thead>
 
     <tbody id="movies">
       <% @movies.each do |movie| %>
         <tr id="<%= dom_id(movie) %>">
-          <td style="padding:.55rem .7rem;border-bottom:1px solid #f1f1f1"><%= movie.title %></td>
-          <td style="padding:.55rem .7rem;border-bottom:1px solid #f1f1f1">
-            <span style="display:inline-block;padding:.1rem .45rem;border-radius:6px;background:#eef1ff;border:1px solid #dde2ff"><%= movie.rating %></span>
-          </td>
-          <td style="padding:.55rem .7rem;border-bottom:1px solid #f1f1f1"><%= movie.release_date %></td>
-          <td style="padding:.55rem .7rem;border-bottom:1px solid #f1f1f1;white-space:nowrap">
-            <%= link_to "Show", movie,
-                  style: "display:inline-block;margin-right:.25rem;padding:.3rem .55rem;border-radius:6px;border:1px solid #e0e0e0;background:#f8f8f8;color:#2f6fed;text-decoration:none" %>
-            <%= link_to "Edit", edit_movie_path(movie),
-                  style: "display:inline-block;margin-right:.25rem;padding:.3rem .55rem;border-radius:6px;border:1px solid #e0e0e0;background:#f8f8f8;color:#2f6fed;text-decoration:none" %>
-            <%= link_to "Delete", movie,
-                  data: { turbo_method: :delete, turbo_confirm: "Delete “#{movie.title}”?" },
-                  style: "display:inline-block;padding:.3rem .55rem;border-radius:6px;border:1px solid #d64536;background:#e84c3d;color:#fff;text-decoration:none" %>
-          </td>
+          <td><%= movie.title %></td>
+          <td><span class="badge"><%= movie.rating %></span></td>
+          <td><%= movie.release_date %></td>
+          <td><%= link_to "Show", movie, class: "btn btn-link" %></td>
+          <td><%= link_to "Edit", edit_movie_path(movie), class: "btn btn-link" %></td>
+          <td><%= link_to "Delete", movie, class: "btn btn-link" %></td>
         </tr>
       <% end %>
     </tbody>
 
     <tfoot>
       <tr>
-        <td colspan="4" style="padding:.6rem .7rem;color:#555;border-top:2px solid #eaeaea"><%= pluralize(@movies.size, "movie") %> total</td>
+        <td colspan="4"><%= pluralize(@movies.size, "movie") %> total</td>
       </tr>
     </tfoot>
   </table>
 
-  <div style="margin-top:1rem;text-align:right">
-    <%= link_to "New movie", new_movie_path,
-          style: "display:inline-block;padding:.45rem .9rem;border-radius:8px;border:1px solid #2c64d4;background:#2f6fed;color:#fff;text-decoration:none" %>
+  <div class="actions">
+    <%= link_to "New movie", new_movie_path, class: "btn btn-primary" %>
   </div>
 </div>

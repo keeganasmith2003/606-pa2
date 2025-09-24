@@ -1,10 +1,32 @@
-<p style="color: green"><%= notice %></p>
+<div style="max-width:860px;margin:1rem auto;padding:1rem;border:1px solid #e6e6e6;border-radius:8px">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @movie %>
+  <h1 style="margin:0 0 .75rem"><%= @movie.title %></h1>
 
-<div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
+  <dl style="display:grid;grid-template-columns:140px 1fr;row-gap:.35rem;margin:0 0 1rem">
+    <dt style="font-weight:600;color:#555">Rating</dt>
+    <dd style="margin:0">
+      <span style="display:inline-block;padding:.1rem .45rem;border-radius:6px;background:#eef1ff;border:1px solid #dde2ff">
+        <%= @movie.rating %>
+      </span>
+    </dd>
 
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
+    <dt style="font-weight:600;color:#555">Release date</dt>
+    <dd style="margin:0"><%= @movie.release_date %></dd>
+
+    <dt style="font-weight:600;color:#555">Description</dt>
+    <dd style="margin:0"><%= simple_format(@movie.description) %></dd>
+  </dl>
+
+  <div style="margin-top:.75rem;display:flex;gap:.5rem;flex-wrap:wrap">
+    <%= link_to "Edit this movie", edit_movie_path(@movie),
+          style: "display:inline-block;padding:.4rem .7rem;border-radius:6px;border:1px solid #ddd;background:#f8f8f8;color:#333;text-decoration:none" %>
+
+    <%= link_to "Back to movies", movies_path,
+          style: "display:inline-block;padding:.4rem .7rem;border-radius:6px;border:1px solid #ddd;background:#f8f8f8;color:#333;text-decoration:none" %>
+
+    <%= link_to "Destroy this movie", @movie,
+          data: { turbo_method: :delete, turbo_confirm: "Delete “#{@movie.title}”?" },
+          style: "display:inline-block;padding:.4rem .7rem;border-radius:6px;border:1px solid #d64536;background:#e84c3d;color:#fff;text-decoration:none" %>
+  </div>
 </div>

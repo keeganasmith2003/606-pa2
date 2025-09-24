@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+.movies-table th.sorted-asc    { background: #e6f6e6; } /* soft green for ascending */
+.movies-table th.sorted-desc   { background: #ffe9d6; } /* soft orange for descending */
+.movies-table th.sorted-asc a.is-active,
+.movies-table th.sorted-desc a.is-active { font-weight: 600; }
+
+.sortable-link {
+  color: inherit; text-decoration: none;
+}
+.sortable-link:hover { text-decoration: underline; }
+
+table {
+  table-layout: fixed;
+  width: 80%;
+  min-width: 1000px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.6em;
+}

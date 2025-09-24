@@ -1,33 +1,37 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Movies</h1>
+<div class="page">
+  <h1 class="page-title">Movies</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Rating</th>
-      <th>Release date</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody id="movies">
-    <% @movies.each do |movie| %>
-      <tr id="<%= dom_id(movie) %>">
-        <td><%= movie.title %></td>
-        <td><%= movie.rating %></td>
-        <td><%= movie.release_date %></td>
-        <td><%= link_to "Show", movie %></td>
+  <table class="movies-table">
+    <thead>
+      <tr>
+        <th class="<%= sort_class(:title) %>"><%= sortable :title, "Title" %></th>
+        <th class="<%= sort_class(:rating) %>"><%= sortable :rating, "Rating" %></th>
+        <th class="<%= sort_class(:release_date) %>"><%= sortable :release_date, "Release date" %></th>
+        <th class="actions-col"></th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
 
-  <tfoot>
-    <tr>
-      <td colspan="4"><%= pluralize(@movies.size, "movie") %> total</td>
-    </tr>
-  </tfoot>
-</table>
+    <tbody id="movies">
+      <% @movies.each do |movie| %>
+        <tr id="<%= dom_id(movie) %>">
+          <td><%= movie.title %></td>
+          <td><span class="badge"><%= movie.rating %></span></td>
+          <td><%= movie.release_date %></td>
+          <td><%= link_to "Show", movie, class: "btn btn-link" %></td>
+        </tr>
+      <% end %>
+    </tbody>
 
-<%= link_to "New movie", new_movie_path %>
+    <tfoot>
+      <tr>
+        <td colspan="4"><%= pluralize(@movies.size, "movie") %> total</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="actions">
+    <%= link_to "New movie", new_movie_path, class: "btn btn-primary" %>
+  </div>
+</div>

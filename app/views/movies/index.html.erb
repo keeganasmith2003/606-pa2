@@ -1,5 +1,4 @@
 <p style="color: green"><%= notice %></p>
-
 <div class="page">
   <h1 class="page-title">Movies</h1>
 
@@ -21,16 +20,10 @@
           <td><%= movie.release_date %></td>
           <td><%= link_to "Show", movie, class: "btn btn-link" %></td>
           <td><%= link_to "Edit", edit_movie_path(movie), class: "btn btn-link" %></td>
-          <td><%= link_to "Destroy", movie, class: "btn btn-link" %></td>
+          <td><%= button_to "Destroy", movie, method: :delete %></td>
         </tr>
       <% end %>
     </tbody>
-
-    <tfoot>
-      <tr>
-        <td colspan="4"><%= pluralize(@movies.size, "movie") %> total</td>
-      </tr>
-    </tfoot>
   </table>
 
   <div class="actions">

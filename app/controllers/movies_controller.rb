@@ -3,19 +3,16 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    sort      = (params[:sort]      || session[:sort]      || "title").to_s
+    sort = (params[:sort] || session[:sort] || "title").to_s
     direction = (params[:direction] || session[:direction] || "asc").to_s
-
     allowed_cols = %w[title rating release_date]
-    sort      = "title" unless allowed_cols.include?(sort)
-    direction = "asc"   unless %w[asc desc].include?(direction)
-
+    sort = "title" unless allowed_cols.include?(sort)
+    direction = "asc" unless %w[asc desc].include?(direction)
     if params[:sort] != session[:sort] || params[:direction] != session[:direction]
       session[:sort] = sort
       session[:direction] = direction
       redirect_to movies_path(sort:, direction:) and return
     end
-
     @movies = Movie.order(sort => direction.to_sym)
   end
 
@@ -35,7 +32,6 @@ class MoviesController < ApplicationController
   # POST /movies or /movies.json
   def create
     @movie = Movie.new(movie_params)
-
     respond_to do |format|
       if @movie.save
         format.html { redirect_to @movie, notice: "Movie was successfully created." }

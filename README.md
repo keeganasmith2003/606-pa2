@@ -6,19 +6,12 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
-* System dependencies
-
-* Configuration
-
+3.4.5
 * Database creation
-
+rails db:migrate
 * Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
+rails db:seed
 * Deployment instructions
+create a new app in heroku, provision database and deploy from main branch. 
 
-* ...
+production url: https://csce606pa2-0a2cfc39ad37.herokuapp.com/

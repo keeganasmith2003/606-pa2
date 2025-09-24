@@ -1,5 +1,4 @@
 module MoviesHelper
-  # Returns "sorted-asc", "sorted-desc", or "" for TH classes
   def sort_class(column)
     current_col = params[:sort].to_s
     current_dir = params[:direction].to_s == "desc" ? "desc" : "asc"
@@ -7,14 +6,12 @@ module MoviesHelper
     current_dir == "asc" ? "sorted-asc" : "sorted-desc"
   end
 
-  # Clickable header link with a screen-reader cue
-  # Always shows a caret symbol for non-color cue (▲/▼)
   def sortable(column, label = nil)
     label ||= column.to_s.titleize
 
     current_col = params[:sort].to_s
     current_dir = params[:direction].to_s == "desc" ? "desc" : "asc"
-    active      = (current_col == column.to_s)
+    active = (current_col == column.to_s)
 
     next_dir = (active && current_dir == "asc") ? "desc" : "asc"
 

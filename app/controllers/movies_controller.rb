@@ -3,16 +3,13 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    # Read from params or fall back to session (persist selection)
     sort      = (params[:sort]      || session[:sort]      || "title").to_s
     direction = (params[:direction] || session[:direction] || "asc").to_s
 
-    # Whitelist to avoid SQL injection / invalid values
     allowed_cols = %w[title rating release_date]
     sort      = "title" unless allowed_cols.include?(sort)
     direction = "asc"   unless %w[asc desc].include?(direction)
 
-    # Persist choice and make it canonical in the URL
     if params[:sort] != session[:sort] || params[:direction] != session[:direction]
       session[:sort] = sort
       session[:direction] = direction
